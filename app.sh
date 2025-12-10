@@ -110,9 +110,9 @@ stat_todo() {
    # looping untuk menghitung berapa banyak tugas yang selesai & pending
    for status in "${task_status[@]}"; do
       # jika tugas sudah ditandai selesai tambah tugas_selesai jika belum tambah tugas_pending
-      if [["$status" == "Done"]]; then
+      if [[ "$status" == "Done" ]]; then
         tugas_selesai=$((tugas_selesai + 1))
-      elif [["$status" == "Pending"]]; then
+      elif [[ "$status" = "Pending" ]]; then
         tugas_pending=$((tugas_pending + 1))
       fi
    done
