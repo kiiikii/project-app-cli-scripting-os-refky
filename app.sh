@@ -43,15 +43,38 @@ add_task() {
      fi
    done
 }
-
+   
 # function untuk menampilkan tugas
 display_todo() {
-
+   
 }
 
 # function untuk menghapus tugas
 delete_task() {
+   if [[ ${#todo_list[@]} -eq 0 ]]; then
+     echo -e "${merah}Tugas Kosong!${reset}"
+     return
+   fi
 
+   # untuk menampilkan list tugas
+   echo "Daftar list tugas"
+   for i in "${!todo_list[@]}"; do
+      echo "$((i+1)). ${todo_list[$i]}"
+   done
+
+   # mengambil inputan dari user tugas mana yang mau dihapus
+   read -p "Masukan nomor tugas yang ingin dihapus: " idx
+   if [[ $idx =~ ^[0-9]+$ ]] && (( idx > 0 && idx <= ${#todo_list[@]} )); then
+     unset todo_list[$((idx-1))]
+     unset task_status[$((idx-1))]
+
+     # Re-index kembali arraynya
+     todo_list=("${todo_list[@]}")
+     task_status=("${task_status[@]}")
+     echo -e "${hijau}Tugas berhasil dihapus.${reset}"
+   else
+     echo -e "${merah}Input tidak valid!${reset}"
+   fi
 }
 
 # function untuk menandai tugas selesai
