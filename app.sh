@@ -5,7 +5,7 @@
 # ansi code warna untuk estetikan penulisan
 merah="\e[38;5;196m✗ "    # Merah cerah
 hijau="\e[38;5;46m✓ "     # Hijau cerah
-kuning="\e[38;5;226m⚠ "   # Kuning cerah
+kuning="\e[38;5;226m⚠"   # Kuning cerah
 orange="\e[38;5;214m "    # Orange/jingga
 reset="\e[0m"
 
@@ -26,7 +26,7 @@ add_task() {
        local duplikat=0 # variabel ini hanya berlaku didalam fungsi add_task
        for existing in "${todo_list[@]}"; do
          if [[ "$existing" == "$task - "* ]]; then # untuk cek duplikat
-           echo -e "${kuning}Nama tugas sudah ada. Coba Lagi.${reset}"
+           echo -e "${kuning} Nama tugas sudah ada. Coba Lagi.${reset}"
            duplikat=1
            break
          fi
@@ -118,7 +118,7 @@ stat_todo() {
    done
    echo "Statistik tugas."
    echo -e "${hijau}Tugas selesai: $tugas_selesai.${reset}"
-   echo -e "${kuning}Tugas belum selesai: $tugas_pending.${reset}"
+   echo -e "${kuning} Tugas belum selesai: $tugas_pending.${reset}"
    echo "Total tugas: ${#todo_list[@]}"
 }
 
