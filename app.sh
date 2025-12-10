@@ -43,10 +43,19 @@ add_task() {
      fi
    done
 }
-   
+
 # function untuk menampilkan tugas
 display_todo() {
-   
+   if [ ${#todo_list[@]} -eq 0 ]; then
+     echo -e "${merah}Belum ada tugas."
+     return
+   fi
+
+   echo -e "${orange}------ List tugas ------${reset}"
+   for i in "${!todo_list[@]}"; do
+      echo "$((i+1)). ${todo_list[$i]}"
+   done
+   echo -e "${orange}------------------------${reset}"
 }
 
 # function untuk menghapus tugas
